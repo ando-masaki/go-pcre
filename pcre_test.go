@@ -6,7 +6,7 @@ import (
 	"testing"
 	"reflect"
 
-	"go.elara.ws/pcre"
+	"github.com/ando-masaki/go-pcre"
 )
 
 func TestCompileError(t *testing.T) {

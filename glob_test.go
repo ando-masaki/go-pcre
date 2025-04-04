@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"go.elara.ws/pcre"
+	"github.com/ando-masaki/go-pcre"
 )
 
 func TestCompileGlob(t *testing.T) {

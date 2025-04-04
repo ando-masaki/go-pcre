@@ -1,4 +1,4 @@
-module go.elara.ws/pcre
+module github.com/ando-masaki/go-pcre
 
 go 1.18
 
