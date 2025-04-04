@@ -1,4 +1,4 @@
-# pcre
+# go-pcre
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/ando-masaki/go-pcre.svg)](https://pkg.go.dev/github.com/ando-masaki/go-pcre)
 [![status-badge](https://github.com/ando-masaki/go-pcre/actions/workflows/go-tests.yml/badge.svg)](https://github.com/ando-masaki/go-pcre/actions)
