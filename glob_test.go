@@ -64,6 +64,16 @@ func TestGlob(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	err = touch("pcretest/dir1/.file")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = touch("pcretest/dir2/.file")
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	err = touch("pcretest/test1/dir4/text.txt")
 	if err != nil {
 		t.Fatal(err)
