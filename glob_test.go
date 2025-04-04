@@ -1,7 +1,10 @@
 package pcre_test
 
 import (
+	"io/ioutil"
+	"log"
 	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/ando-masaki/go-pcre"
@@ -36,6 +39,24 @@ func TestCompileGlob(t *testing.T) {
 	if r.MatchString("/home") {
 		t.Error("expected /home not to match")
 	}
+}
+
+func dirwalk(dir string) []string {
+	files, err := ioutil.ReadDir(dir)
+	if err != nil {
+		panic(err)
+	}
+
+	var paths []string
+	for _, file := range files {
+		if file.IsDir() {
+			paths = append(paths, dirwalk(filepath.Join(dir, file.Name()))...)
+			continue
+		}
+		paths = append(paths, filepath.Join(dir, file.Name()))
+	}
+
+	return paths
 }
 
 func TestGlob(t *testing.T) {
@@ -76,6 +97,9 @@ func TestGlob(t *testing.T) {
 	if len(matches) != 1 || matches[0] != "pcretest" {
 		t.Errorf("expected [pcretest], got %v", matches)
 	}
+
+	paths := dirwalk("pcretest")
+	log.Printf("paths:%#v\n", paths)
 
 	matches, err = pcre.Glob("pcretest/dir*")
 	if err != nil {
