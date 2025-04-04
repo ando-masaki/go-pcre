@@ -1,0 +1,26 @@
+name: Go Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        platform: [linux/amd64, linux/arm64, linux/riscv64]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.x'
+
+    - name: Run tests
+      run: go test
